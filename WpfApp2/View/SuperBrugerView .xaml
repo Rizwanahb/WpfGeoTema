@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="GeoTema.View.SuperBrugerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeoTema.View"
+             mc:Ignorable="d" Height="455.579" Width="803.719">
+    <Grid Margin="0,121,0,0" RenderTransformOrigin="0.382,0.413">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="299*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="454*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <!--<ListView  x:Name="Geodatalist" ItemsSource="{Binding Geodata.Fødselsrate}" Grid.ColumnSpan="6" IsSynchronizedWithCurrentItem="True" Margin="-1,-47,56,11" RenderTransformOrigin="0.441,0.49" SelectionChanged="Geodatalist_SelectionChanged">
+            <ListView.View >
+                <GridView>-->
+        <DataGrid x:Name="dataGrid_Vis" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Grid.ColumnSpan="3" Margin="-2,-54,2,0" Height="387" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Land Navn" Binding="{Binding Land_Navn}"/>
+                <DataGridTextColumn Header="Verdensdel Navn" Binding="{Binding Verdensdel_Navn}"/>
+                <DataGridTextColumn Header="Rang" Binding="{Binding Rang}"/>
+                <DataGridTextColumn Header="Fødselsrate" Binding="{Binding Fødselsrate}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<GridViewColumn Header="Land Navn" DisplayMemberBinding="{Binding Land_Navn}" />
+                    <GridViewColumn Header="Verdensdel Navn" DisplayMemberBinding="{Binding Verdensdel_Navn}"/>
+                    <GridViewColumn Header="Rang" DisplayMemberBinding="{Binding Rang}"/>
+                    <GridViewColumn Header="Fødselsrate" DisplayMemberBinding="{Binding Fødselsrate}"/>
+                </GridView>
+
+            </ListView.View>
+            
+        </ListView>-->
+
+        <Grid Margin="16,-30,99,39" Grid.Column="3" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Column="0" Margin="0,0,69,10" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="89*"/>
+                    <ColumnDefinition Width="43*"/>
+                    <ColumnDefinition Width="21*"/>
+                    <ColumnDefinition Width="41*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Land " FontSize="14" Grid.ColumnSpan="2" />
+                <TextBox Grid.Column="3" Name="txtLandNavn" Text="{Binding ElementName=Geodatalist, Path=SelectedItem.Land_Navn, Mode=OneWay}" Grid.ColumnSpan="2"/>
+
+                <TextBlock Text="Verdensdel" Grid.Row="1" FontSize="14" Grid.ColumnSpan="3"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Name="txtVerdensdelNavn" Text="{Binding ElementName = Geodatalist, Path=SelectedItem.Verdensdel_Navn, Mode=OneWay}" Grid.ColumnSpan="2"/>
+
+
+                <TextBlock Grid.Row="2" Text="Rang" FontSize="14" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="2" Grid.Column="3" Name="txtRang" Text="{Binding ElementName=GeografikList, Path=SelectedItem.Rang, Mode=OneWay}" Grid.ColumnSpan="2"/>
+
+                <TextBlock Grid.Row="3" Text="Fødselsrate" FontSize="14" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="3" Grid.Column="3" Name="txtFødselsrate" Text="{Binding ElementName=Geodatalist, Path=SelectedItem.Data, Mode=OneWay}" Grid.ColumnSpan="2"/>
+
+                <Button Content="Create"  Grid.Row="4"  Click="Create_Click" Margin="0,21,3,2" Grid.RowSpan="2" />
+                <Button Content="Update" Grid.Column="1" Grid.Row="4" Click="Update_Click" Margin="25,21,96,1" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
+                <Button Content="Delete" Grid.Column="4" Grid.Row="4" Click="Delete_Click" Margin="25,21,3,1" Grid.RowSpan="2"/>
+
+            </Grid>
+
+        </Grid>
+
+
+        <!--<StackPanel Name="stackwindow" Orientation="Vertical" Margin="0,1,409,57">
+            <Grid>
+                -->
+        <!--<DataGrid Name="dataGrid_Vis" AutoGenerateColumns="True" />-->
+        <!--
+                <DockPanel>
+                    <DataGrid x:Name="dataGrid_Vis" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Land Navn" Binding="{Binding Land_Navn}"/>
+                            <DataGridTextColumn Header="Verdensdel Navn" Binding="{Binding Verdensdel_Navn}"/>
+                            <DataGridTextColumn Header="Rang" Binding="{Binding Rang}"/>
+                            <DataGridTextColumn Header="Fødselsrate" Binding="{Binding Fødselsrate}"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </DockPanel>-->
+
+    </Grid>
+
+
+
+
+</UserControl>

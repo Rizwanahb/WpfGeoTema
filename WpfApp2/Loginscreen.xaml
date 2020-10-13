@@ -1,0 +1,29 @@
+﻿<Window x:Class="GeoTema.Loginscreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeoTema"
+        mc:Ignorable="d"
+        Title="GeoTema-Login" Height="300" Width="350" FontSize="14" Background="DodgerBlue">
+  
+    <Border Background="Honeydew" CornerRadius="20" Margin="20">
+        
+        <StackPanel Margin="20">
+            <Image Width="140">
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="300" UriSource="C:\Rizwanah\geotema_logo.png" />
+                </Image.Source>
+            </Image>
+            <!--<Label Content="Login" Foreground="Gray" FontSize="25" HorizontalAlignment="Center" ></Label>-->
+            <Separator></Separator>
+            <Label Content="Bruger Navn" Foreground="Black"></Label>
+            <TextBox Name="txtbrugernavn" Background="Beige" Foreground="Black" FontSize="18"></TextBox>
+            <Label Content="Adganskode" Foreground="Black"></Label>
+            <TextBox Name="txtpwd" Background="Beige" Foreground="Black" FontSize="18"></TextBox>
+            <Button x:Name="btnlogin" Content="Login" Click="btnlogin_Click" Margin="60 10" Background="Beige" Foreground="Black"/>
+
+        </StackPanel>
+    </Border>
+
+</Window>
