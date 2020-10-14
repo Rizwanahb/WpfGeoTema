@@ -13,7 +13,7 @@ namespace GeoTema.Model
         private string _brugerNavn;
         private string _adgangskode;       
         private string _brugerType;
-
+        //det er en test
         public int Bruger_ID {
             get => _brugerID;
             set => _brugerID = value;  }
