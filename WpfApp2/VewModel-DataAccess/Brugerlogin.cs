@@ -53,7 +53,7 @@ namespace GeoTema.VewModel_DataAccess
                 using (SqlCommand command = new SqlCommand(sql, cnn))
                 {
                     command.Parameters.AddWithValue("@Bruger_Navn", br.Bruger_Navn);
-                    command.Parameters.AddWithValue("@Password", br.Bruger_Adgangskode);
+                    command.Parameters.AddWithValue("@Bruger_Adgangskode", br.Bruger_Adgangskode);
                     command.Parameters.AddWithValue("@Bruger_Type", br.Bruger_Type);
 
 
@@ -106,15 +106,16 @@ namespace GeoTema.VewModel_DataAccess
             
             using (SqlConnection cnn = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("Update Bruger set Bruger_Adgangskode = 'PassWord' where Bruger_ID=@Bruger_ID", cnn))          //Opdatere Password med "PassWord" for at nulstille koden
+                using (SqlCommand cmd = new SqlCommand("Update Bruger set Bruger_Adgangskode = @Bruger_Adgangskode where Bruger_ID=@Bruger_ID", cnn))          //Opdatere Password med "PassWord" for at nulstille koden
                 {
+                    cmd.Parameters.AddWithValue("@Bruger_Adgangskode", reset.Bruger_Adgangskode);
                     cmd.Parameters.AddWithValue("@Bruger_ID", reset.Bruger_ID);
                     cnn.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
         }
-
+        
         //Method for at opdatere Bruger tabellen
         public static int UpdateBrugerData(Bruger br)            
         {

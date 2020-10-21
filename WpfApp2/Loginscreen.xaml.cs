@@ -28,6 +28,7 @@ namespace GeoTema
         public Loginscreen()
         {
             InitializeComponent();
+         
 
             
         }
@@ -37,7 +38,7 @@ namespace GeoTema
             Bruger current = new Bruger
             {
                 //loginselect metod er blevet kaldet for at hente bruger data fra Bruger tabellen
-                Bruger_Type = Brugerlogin.loginselect(txtbrugernavn.Text, txtpwd.Text)              
+                Bruger_Type = Brugerlogin.loginselect(txtbrugernavn.Text, txtpwd.Password)              
                   
             };
             if (current.Bruger_Type != "")   //Hvis bruger findes så viser MainWindow
@@ -53,6 +54,11 @@ namespace GeoTema
 
 
            
+        }
+
+        private void txtpwd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

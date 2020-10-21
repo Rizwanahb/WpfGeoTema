@@ -18,10 +18,10 @@
             <StackPanel Orientation="Horizontal" Height="35">
                 <Image Source="Icons/standard.png" Height="25" Width="30" />
                 <Label Padding="4" Width="104" FontWeight="Bold" Content="Standardbruger" Margin="0,8,0,0"/>
+                
             </StackPanel>
-
+          
         </Button>
-
 
         <Button Name="btnsuper" Width="150" HorizontalAlignment="Center" Click="btnsuper_Click"  Margin="241,0" BorderThickness="0">
             <StackPanel Orientation="Horizontal" Height="35">
@@ -46,7 +46,7 @@
 
                             <TabItem Name="Vis" Margin="-1,-1,2,2" MouseLeftButtonDown="Vis_Clicked">
                                 <TabItem.Header >
-                                    <TextBlock Text="Vis GeoTema Data" Height="25" FontSize="13"  ToolTip = "Read data from the SQL Database" RenderTransformOrigin="0.5,0.5" Width="117">
+                                    <TextBlock Text="Vis GeoTema Data" Height="25" FontSize="13"  ToolTip = "Read data from the SQL Database" RenderTransformOrigin="0.5,0.5" Width="110">
 
                                     </TextBlock>
                                 </TabItem.Header>
@@ -55,27 +55,29 @@
 
                             <TabItem Name="Tilføj"  Margin="-1,-1,2,2"  MouseLeftButtonDown="Tilføj_Clicked">
                                 <TabItem.Header>
-                                    <TextBlock Text="Tilføj Data" Height="25" Width="93" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
+                                    <TextBlock Text="Rediger Data" Height="25" Width="76" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
 
                                 </TabItem.Header>
                             </TabItem>
 
                             <TabItem Name="Opret" IsEnabled="True" Margin="-1,-1,2,2"  MouseLeftButtonDown="Opret_Clicked">
                                 <TabItem.Header>
-                                    <TextBlock Text="Oprette Bruger" Height="25" Width="115" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
+                                    <TextBlock Text="Rediger Bruger" Height="25" Width="88" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
                                 </TabItem.Header>
                             </TabItem>
 
-                            <TabItem Name="Account" IsEnabled="True" Margin="-1,-1,2,2" MouseLeftButtonDown="Account_Clicked">
+                            <TabItem Name="Logud" IsEnabled="True" Margin="-1,-1,2,2" MouseLeftButtonDown="logud_Clicked">
                                 <TabItem.Header>
-                                    <TextBlock Text="Account" Height="25" Width="86" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
+                                    <TextBlock Text="Log ud" Height="25" Width="76" FontSize="13" ToolTip="logud fra programmet"/>
                                 </TabItem.Header>
-                                
                             </TabItem>
+
+                            
+
                         </TabControl>
-                        <Image Width="108" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,1,22,-20" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <Image Width="160" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-4,14,-28" Height="38" RenderTransformOrigin="0.5,0.5">
                             <Image.Source>
-                                <BitmapImage DecodePixelWidth="300" UriSource="C:\Rizwanah\geotema_logo.png" />
+                                <BitmapImage DecodePixelWidth="300" UriSource="Icons/geotema_logo.png" />
                             </Image.Source>
                         </Image>
 
@@ -90,14 +92,8 @@
             </Grid>
         </StackPanel>
 
-        <View:Adminview x:Name="Adminview" Visibility="Hidden"/>
-        <View:StandardBrugerView  x:Name="StandardBrugerView" Visibility="Hidden"/>
-        
-
-        <!--<View:SuperBrugerView  x:Name="SuperBrugerView" Visibility="Visible" />-->
-        <!--<View:Adminview Grid.Row="3" Grid.ColumnSpan="3" x:Name="adminView" Visibility="Hidden" Grid.RowSpan="2"/>
-        <View:SuperBrugerView Grid.Row="3" Grid.ColumnSpan="3" x:Name="superView" Visibility="Hidden" Grid.RowSpan="2"/>
-        <View:SuperBrugerView  Grid.Row="3" Grid.ColumnSpan="3" x:Name="brugerView" Visibility="Visible" Grid.RowSpan="2"/>-->
+        <!--<View:Adminview x:Name="Adminview" Visibility="Hidden"/>-->
+        <View:StandardBrugerView  x:Name="StandardBrugerView" Visibility="Hidden"/>     
 
     </Grid>
 

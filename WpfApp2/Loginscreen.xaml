@@ -12,15 +12,15 @@
         <StackPanel Margin="20">
             <Image Width="140">
                 <Image.Source>
-                    <BitmapImage DecodePixelWidth="300" UriSource="C:\Rizwanah\geotema_logo.png" />
+                    <BitmapImage DecodePixelWidth="300" UriSource="Icons\geotema_logo.png" />
                 </Image.Source>
             </Image>
-            <!--<Label Content="Login" Foreground="Gray" FontSize="25" HorizontalAlignment="Center" ></Label>-->
+            <!--<Label Content="Login" Foreground="Gray" FontSize="25" HorizontalAlignment="Center" ></Label Hello github>-->
             <Separator></Separator>
             <Label Content="Bruger Navn" Foreground="Black"></Label>
             <TextBox Name="txtbrugernavn" Background="Beige" Foreground="Black" FontSize="18"></TextBox>
             <Label Content="Adganskode" Foreground="Black"></Label>
-            <TextBox Name="txtpwd" Background="Beige" Foreground="Black" FontSize="18"></TextBox>
+            <PasswordBox Name="txtpwd" Background="Beige" Foreground="Black" FontSize="18" PasswordChar="*"></PasswordBox>
             <Button x:Name="btnlogin" Content="Login" Click="btnlogin_Click" Margin="60 10" Background="Beige" Foreground="Black"/>
 
         </StackPanel>

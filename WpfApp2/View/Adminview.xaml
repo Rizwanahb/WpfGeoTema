@@ -6,46 +6,97 @@
              xmlns:local="clr-namespace:GeoTema.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-     <Border BorderBrush="#FF464545" BorderThickness="1">
-        <Grid Background="DodgerBlue">
-            <TabControl Background="WhiteSmoke" Margin="0,0,0,0" BorderThickness="1">
 
-                <!--First TabItem that displays the data from the SQL Database in a DataGrid-->
-                <TabItem Name="Vis_" Margin="-1,-1,2,2">
-                    <TabItem.Header>
-                        <TextBlock Text="Vis GeoTema Data" Height="25" FontSize="13"  ToolTip = "Read data from the SQL Database"/>
-                    </TabItem.Header>
-                </TabItem>
-           
-      
-                <TabItem Name="Tilføj_" IsEnabled="False" Margin="-1,-1,2,2" >
-                <TabItem.Header>
-                        <TextBlock Text="Tilføj Data" Height="25" Width="70" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
-                        
-                </TabItem.Header>
-                </TabItem>
+    <Grid Margin="0,121,0,0" RenderTransformOrigin="0.382,0.413">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="297*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="312*"/>
 
-                <TabItem Name="Opret_" IsEnabled="False" Margin="-1,-1,2,2" >
-                    <TabItem.Header>
-                        <TextBlock Text="Oprette Bruger" Height="25" Width="100" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
-                    </TabItem.Header>
-                </TabItem>
+        </Grid.ColumnDefinitions>
 
-                <TabItem Name="Account_" IsEnabled="False" Margin="-1,-1,2,2" >
-                    <TabItem.Header>
-                        <TextBlock Text="Account" Height="25" Width="70" FontSize="13" ToolTip="Tilføj data to the SQL Database"/>
-                    </TabItem.Header>
-                </TabItem>
+        <!--<ListView  x:Name="Geodatalist" ItemsSource="{Binding Geodata.Fødselsrate}" Grid.ColumnSpan="6" IsSynchronizedWithCurrentItem="True" Margin="-1,-47,56,11" RenderTransformOrigin="0.441,0.49" SelectionChanged="Geodatalist_SelectionChanged">
+            <ListView.View >
+                <GridView>-->
+        <DataGrid x:Name="dataGrid_VisBruger" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Grid.ColumnSpan="2" Margin="-2,-54,10,-4" Height="387" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Bruger Navn" Binding="{Binding Bruger_Navn}"/>
+                <DataGridTextColumn Header="Bruger Type" Binding="{Binding Bruger_Type}"/>
+                <DataGridTextColumn Header="Adgangskode" Binding="{Binding Rang}"/>
+                <!--<DataGridTextColumn Header="Fødselsrate" Binding="{Binding Fødselsrate}"/>-->
 
-                
-            </TabControl>
-            <Image Width="150" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <Image.Source>
-                    <BitmapImage DecodePixelWidth="300" UriSource="C:\Rizwanah\GeoTema.png" />
-                </Image.Source>
-            </Image>
+            </DataGrid.Columns>
+        </DataGrid>
 
+
+        <Grid Margin="0,-30,80,118" Grid.Column="6" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Column="0" Margin="-13,0,57,34" Grid.RowSpan="3" Grid.ColumnSpan="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="85*"/>
+                    <ColumnDefinition Width="6"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="76*"/>
+                    <ColumnDefinition Width="74*"/>
+                    <ColumnDefinition Width="0*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Bruger Navn " FontSize="14" Grid.ColumnSpan="4" />
+                <TextBox Grid.Column="5" Name="txtbrugernavn" Text="{Binding ElementName=dataGrid_VisBruger, Path=SelectedItem.Bruger_Navn, Mode=OneWay}" Grid.ColumnSpan="3" Margin="0,0,-40,10"/>
+
+                <TextBlock Text="Bruger Type" Grid.Row="1" FontSize="14" Grid.ColumnSpan="4"/>
+                <TextBox Grid.Row="1" Grid.Column="5" Name="txtbrugertype" Text="{Binding ElementName = dataGrid_VisBruger, Path=SelectedItem.Bruger_Type, Mode=OneWay}" Grid.ColumnSpan="3" Margin="0,0,-40,10"/>
+
+
+                <TextBlock Grid.Row="2" Text="Adganskode" FontSize="14" Grid.ColumnSpan="4"/>
+                <TextBox Grid.Row="2" Grid.Column="5" Name="txtadgangskode" Text="{Binding ElementName=dataGrid_VisBruger, Path=SelectedItem.Bruger_Adgangskode, Mode=OneWay}" Grid.ColumnSpan="3" Margin="0,0,-40,10"/>
+
+
+
+                <Button Content="Create"  Grid.Row="3"  Click="Create_Click" Margin="0,14,3,2" Grid.ColumnSpan="3" />
+                <Button Content="Reset" Grid.Column="4" Grid.Row="3"  Click="Reset_Click" Margin="0,14,3,2"/>
+                <Button Content="Update" Grid.Column="5" Grid.Row="3" Click="Update_Click" Margin="0,14,3,2"/>
+
+                <Button Content="Delete" Grid.Column="6" Grid.Row="3" Click="Delete_Click" Margin="0,14,3,0" Height="22" VerticalAlignment="Top"/>
+
+
+
+            </Grid>
+
+            <Button Content="Refresh" Grid.Column="1" Grid.Row="3" Click="Refresh_Click" Margin="0,0,37,39"/>
         </Grid>
-    </Border>
+
+
+    </Grid>
+
+
+
+
 </UserControl>

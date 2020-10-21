@@ -74,6 +74,12 @@ namespace GeoTema
             stackwindow.Children.Add(standard);
         }
 
+        private void logud_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            stackwindow.Children.Clear();           
+            this.Close();
+        }
+
         private void Account_Clicked(object sender, MouseButtonEventArgs e)
         {
             
@@ -85,12 +91,14 @@ namespace GeoTema
         {
             stackwindow.Children.Clear();
             SuperBrugerView super = new SuperBrugerView();
-                 stackwindow.Children.Add(super);
+            stackwindow.Children.Add(super);
            
         }
     private void Opret_Clicked(object sender, MouseButtonEventArgs e)
         {
-
+            stackwindow.Children.Clear();
+            Adminview admin = new Adminview();
+            stackwindow.Children.Add(admin);
         }
         //private void ChangePassword_Clicked(object sender, MouseButtonEventArgs e)
         //{
@@ -106,21 +114,13 @@ namespace GeoTema
         //}
         private void btnstandard_Click(object sender, RoutedEventArgs e)
         {
-            ////StandardBrugerView standard = new StandardBrugerView();
-            //btnstandard.Visibility = Visibility.Visible;
-            //Tilføj.IsEnabled = false;
-            //Opret.IsEnabled = false;
-
-
-            //stackwindow.Children.Add(standard);
+            
 
         }
 
         private void btnsuper_Click(object sender, RoutedEventArgs e)
         {
-            //SuperBrugerView super = new SuperBrugerView();
-            ////btnsuper.Visibility = Visibility.Hidden;
-            //stackwindow.Children.Add(super);
+            
         }
 
         private void btnadmin_Click(object sender, RoutedEventArgs e)
@@ -134,32 +134,7 @@ namespace GeoTema
 }
 
 
-        //private void btnstandard_Click(object sender, RoutedEventArgs e)      //KlikEvent til SuperBruger som kan se superview 
-        //{
-
-        //    Adminview.Visibility = Visibility.Hidden;
-        //    SuperBrugerView.Visibility = Visibility.Hidden;
-        //    StandardBrugerView.Visibility = Visibility.Visible;
-        //}
-
-        //private void btnsuper_Click(object sender, RoutedEventArgs e)   //KlikEvent til StandardBruger som kan kun se Brugerview 
-        //{
-        //    Adminview.Visibility = Visibility.Hidden;
-        //    SuperBrugerView.Visibility = Visibility.Hidden;
-        //    SuperBrugerView.Visibility = Visibility.Visible;
-        //    SuperBrugerView.RefreshGrid();
-
-        //}
-
-        //private void btnadmin_Click(object sender, RoutedEventArgs e)     //KlikEvent til StandardBruger som kan  se Adminview
-        //{
-        //    SuperBrugerView.Visibility = Visibility.Hidden;
-        //    SuperBrugerView.Visibility = Visibility.Hidden;
-        //    Adminview.Visibility = Visibility.Visible;
-        //    SuperBrugerView.RefreshGrid();
-        //}
-
-
+       
 
 
 

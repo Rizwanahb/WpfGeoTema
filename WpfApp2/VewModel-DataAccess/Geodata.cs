@@ -83,7 +83,7 @@ namespace GeoTema.VewModel_DataAccess
                 }
                 else if (l.Land_ID == 0)            // hvis den ikke findes i forvejen, så bliver den indsat i tabellen.
                 {
-                    string sql1 = "Insert into Land(Land) values(@Land)";             //Insætter nyt LandNavn i tabellen
+                    string sql1 = "Insert into Land(Land) values(@Land_Navn)";             //Insætter nyt LandNavn i tabellen
                     using (SqlCommand command = new SqlCommand(sql1, cnn))
                     {
                         command.Parameters.AddWithValue("@Land_Navn", l.Land_Navn);
@@ -120,7 +120,7 @@ namespace GeoTema.VewModel_DataAccess
             using (SqlConnection cnn = new SqlConnection(connectionString))
             {
                 cnn.Open();
-                string sql = "select Verdensdel_ID from  Verdensdel where Verdensdel_Navn=@Verdensdel_Navn";         // SQL querry for samle ID fra indsat Landnavn
+                string sql = "select V_ID from  Verdensdel where Verdensdel_Navn=@Verdensdel_Navn";         // SQL querry for samle ID fra indsat Landnavn
                 using (SqlCommand command = new SqlCommand(sql, cnn))
                 {
                     command.Parameters.AddWithValue("@Verdensdel_Navn", v.Verdensdel_Navn);
@@ -138,6 +138,7 @@ namespace GeoTema.VewModel_DataAccess
 
                 if (v.V_ID > 0)                 //Tjekker Verdensdel's ID om den findes i tabellen så bliver den ikke indsat
                 {
+                
                     return v;                           // returnere Verdensdel Objektet.
                 }
                 else if (v.V_ID == 0)           // hvis den ikke findes i forvejen, så bliver den indsat i tabellen.
@@ -152,7 +153,7 @@ namespace GeoTema.VewModel_DataAccess
                         //cnn.Open();
                         result = command.ExecuteNonQuery();
                     }
-                    string sql2 = "select Verdensdel_ID from  Verdensdel where Verdensdel_Navn=@Verdensdel_Navn";           // Henter den seneste LandNavn's ID.
+                    string sql2 = "select V_ID from  Verdensdel where Verdensdel_Navn=@Verdensdel_Navn";           // Henter den seneste LandNavn's ID.
                     using (SqlCommand command = new SqlCommand(sql2, cnn))
                     {
                         command.Parameters.AddWithValue("@Verdensdel_Navn", v.Verdensdel_Navn);
@@ -225,27 +226,27 @@ namespace GeoTema.VewModel_DataAccess
 
         //public static Indeks GetIndeks(Indeks lv)          //Metode for at hente ID fra Land_Verdensdel tabellen
         //{
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        string sql2 = "Select Indeks_ID from  Indeks where Land_ID =@land_id";          //henter Landverdensdel ID med LandID
-        //        using (SqlCommand command = new SqlCommand(sql2, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@Land_ID", lv.Land_ID);
+        //    //using (SqlConnection connection = new SqlConnection(connectionString))
+        //    //{
+        //    //    string sql2 = "Select Indeks_ID from  Indeks where Land_ID =@land_id";          //henter Landverdensdel ID med LandID
+        //    //    using (SqlCommand command = new SqlCommand(sql2, connection))
+        //    //    {
+        //    //        command.Parameters.AddWithValue("@Land_ID", lv.Land_ID);
 
 
-        //            connection.Open();
-        //            SqlDataReader reader = command.ExecuteReader();
-        //            while (reader.Read())
-        //            {
-        //                lv.Land_ID = reader.GetInt32(1);
-        //            }
+        //    //        connection.Open();
+        //    //        SqlDataReader reader = command.ExecuteReader();
+        //    //        while (reader.Read())
+        //    //        {
+        //    //            lv.Land_ID = reader.GetInt32(1);
+        //    //        }
 
-        //            reader.Close();
-        //        }
+        //    //        reader.Close();
+        //    //    }
 
 
-        //    }
-        //    return lv;
+        //    //}
+        //    //return lv;
         //}
         public static Rang InsertRang(Rang r, Land l)   //Method for at indtaste data i Rang tabellen
         {
@@ -258,8 +259,6 @@ namespace GeoTema.VewModel_DataAccess
                 using (SqlCommand command = new SqlCommand(sql, cnn))
                 {
                     command.Parameters.AddWithValue("@Rang", r.Rang_Nummer);
-
-
 
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
@@ -281,7 +280,7 @@ namespace GeoTema.VewModel_DataAccess
                 }
                 else if (r.Rang_ID == 0)                                    // hvis Rang_ID ikke findes så bliver dne indsat
                 {
-                    string sql1 = "Insert into Rang(Land_ID, Rang,Fødselsrate) values(@Land_ID,@Rang,,@Fødselsrate)";               //indsætter data i Rang tabellen
+                    string sql1 = "Insert into Rang(Land_ID, Rang,Fødselsrate) values(@Land_ID,@Rang,@Fødselsrate)";               //indsætter data i Rang tabellen
                     using (SqlCommand command = new SqlCommand(sql1, cnn))
                     {
                         command.Parameters.AddWithValue("@Land_ID", l.Land_ID);
@@ -413,7 +412,7 @@ namespace GeoTema.VewModel_DataAccess
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT Verdensdel_ID FROM dbo.Verdensdel WHERE Verdensdel_Navn=@Verdensdel_Navn", connection))              // henter VerdensdelID fra Verdensdel Tabellen
+                using (SqlCommand cmd = new SqlCommand("SELECT V_ID FROM dbo.Verdensdel WHERE Verdensdel_navn=@Verdensdel_navn", connection))              // henter VerdensdelID fra Verdensdel Tabellen
                 {
                     cmd.Parameters.AddWithValue("@Verdensdel_Navn", v.Verdensdel_Navn);
                     connection.Open();
